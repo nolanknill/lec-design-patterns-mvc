@@ -13,3 +13,5 @@
     - `?country=UK` or `?country=USA`
 
 2. `GET /contestants/:id`
+
+3. `DELETE /contestants/:id`

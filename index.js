@@ -51,8 +51,20 @@ app.route("/contestants/:id")
     .put((_req, res) => {
         res.send("PUT contestant by ID");
     })
-    .delete((_req, res) => {
-        res.send("DELETE contestant by ID");
+    .delete((req, res) => {
+        const contestants = getContestants();
+        
+        const numberOfContestants = contestants.length;
+
+        const filteredContestants = contestants.filter(contestant => contestant.id !== Number(req.params.id));
+
+        if (numberOfContestants === filteredContestants.length) {
+            return res.status(404).json({ message: "Unable to find contestant with id " + req.params.id});
+        }
+
+        fs.writeFileSync(contestantsFilePath, JSON.stringify(filteredContestants)); 
+        
+        return res.sendStatus(204);
     })
 
 app.listen(PORT, () => {
