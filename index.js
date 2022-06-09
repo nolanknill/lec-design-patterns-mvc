@@ -3,6 +3,13 @@ const app = express();
 const fs = require('fs');
 const PORT = 8080;
 
+app.set('view engine', 'ejs');
+
+app.get('/users', (_req, res) => {
+    res.render('index', {users: [{name:'Nolan'}, {name:'kevin'}]});
+});
+  
+
 const contestantsFilePath = "./data/contestants.json";
 const getContestants = () => {
     return JSON.parse(fs.readFileSync(contestantsFilePath));
