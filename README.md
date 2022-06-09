@@ -5,13 +5,10 @@
     - `node index.js`
     - OR `npx nodemon index.js`
 
-## Endpoints
+## Pages
 1. `GET /contestants`
-    - Returns all contestants. You can add the following query params:
-    - `?order=age`
-    - `?orger=age_descending`
-    - `?country=UK` or `?country=USA`
+    - Shows links to each contestant's bio
 
-2. `GET /contestants/:id`
-
-3. `DELETE /contestants/:id`
+2. `/contestants/:id`
+    - Shows contestant bio
+    - Unfound IDs will render a 404 page
